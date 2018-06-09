@@ -5,6 +5,7 @@ body{
 
 .conteudo{
     width: 50%;
+	min-width:600px;
     margin: 10% auto;
     background-color: lightgray;
     border-radius:20px;
