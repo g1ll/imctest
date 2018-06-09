@@ -28,7 +28,7 @@ $(document).ready(function () {
                             data: {name: nome, altura: alt, peso: peso, imc: imc},
                             dataType: 'html',
                             success: function (data) {
-                                $("#res").html("IMC: " + imc + " <br>" + data);
+                                $("#res").html("IMC: " + imc.toFixed(2) + " <br>" + data);
                                 //ACESSA DADOS DO SERVIDOR VIA GET
                                 $.ajax(
                                         {
