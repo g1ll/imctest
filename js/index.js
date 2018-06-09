@@ -40,9 +40,9 @@ $(document).ready(function () {
                                                 $.each(data, function (i, v) {
                                                     table += '<tr><td>' + v.id + '</td>\n\
                                                             <td>' + v.name + '</td>\n\
-                                                            <td>' + v.altura.toFixed(2) + '</td>\n\
-                                                            <td>' + v.peso.toFixed(2) + '</td>\n\
-                                                            <td>' + v.imc.toFixed(2) + '</td>\n\
+                                                            <td>' + parseFloat(v.altura).toFixed(2) + '</td>\n\
+                                                            <td>' + parseFloat(v.peso).toFixed(2) + '</td>\n\
+                                                            <td>' + parseFloat(v.imc).toFixed(2) + '</td>\n\
                                                             </tr>';
                                                 });
                                                 $("#table table tbody").html(table);
