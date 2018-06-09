@@ -24,7 +24,7 @@ $(document).ready(function () {
                 $.ajax(
                         {
                             type: 'post',
-                            url: 'http://'+server+'/ajaxphp/insere.php',
+                            url: 'https://'+server+'/ajaxphp/insere.php',
                             data: {name: nome, altura: alt, peso: peso, imc: imc},
                             dataType: 'html',
                             success: function (data) {
@@ -33,7 +33,7 @@ $(document).ready(function () {
                                 $.ajax(
                                         {
                                             type: 'get',
-                                            url: 'http://'+server+'/ajaxphp/consulta.php',
+                                            url: 'https://'+server+'/ajaxphp/consulta.php',
                                             dataType: 'JSON',
                                             success: function (data) {
                                                 var table = '<table border=0>';
