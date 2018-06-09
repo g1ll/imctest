@@ -1,6 +1,6 @@
 $(document).ready(function () {
     var nome, imc, alt, peso;
-	var server = 'g1ll.000webhostapp.com';
+    var server = 'g1ll.000webhostapp.com';
 //	var server = 'localhost';
 
     $("#res").hide();
@@ -24,7 +24,7 @@ $(document).ready(function () {
                 $.ajax(
                         {
                             type: 'post',
-                            url: 'https://'+server+'/ajaxphp/insere.php',
+                            url: 'https://' + server + '/ajaxphp/insere.php',
                             data: {name: nome, altura: alt, peso: peso, imc: imc},
                             dataType: 'html',
                             success: function (data) {
@@ -33,16 +33,16 @@ $(document).ready(function () {
                                 $.ajax(
                                         {
                                             type: 'get',
-                                            url: 'https://'+server+'/ajaxphp/consulta.php',
+                                            url: 'https://' + server + '/ajaxphp/consulta.php',
                                             dataType: 'JSON',
                                             success: function (data) {
                                                 var table = '';
                                                 $.each(data, function (i, v) {
                                                     table += '<tr><td>' + v.id + '</td>\n\
                                                             <td>' + v.name + '</td>\n\
-                                                            <td>' + v.altura + '</td>\n\
-                                                            <td>' + v.peso + '</td>\n\
-                                                            <td>' + v.imc + '</td>\n\
+                                                            <td>' + v.altura.toFixed(2) + '</td>\n\
+                                                            <td>' + v.peso.toFixed(2) + '</td>\n\
+                                                            <td>' + v.imc.toFixed(2) + '</td>\n\
                                                             </tr>';
                                                 });
                                                 $("#table table tbody").html(table);
@@ -54,7 +54,7 @@ $(document).ready(function () {
                                         }
                                 );
                             },
-                            error: function (data) { 
+                            error: function (data) {
                                 $("#res").html("ERRO:<br>" + data);
                             }
                         }
