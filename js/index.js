@@ -36,7 +36,7 @@ $(document).ready(function () {
                                             url: 'https://'+server+'/ajaxphp/consulta.php',
                                             dataType: 'JSON',
                                             success: function (data) {
-                                                var table = '<table border=0>';
+                                                var table = '';
                                                 $.each(data, function (i, v) {
                                                     table += '<tr><td>' + v.id + '</td>\n\
                                                             <td>' + v.name + '</td>\n\
@@ -45,7 +45,7 @@ $(document).ready(function () {
                                                             <td>' + v.imc + '</td>\n\
                                                             </tr>';
                                                 });
-                                                $("#table").html(table + "</table>");
+                                                $("#table table tbody").html(table);
                                                 $("#table").fadeIn('fadein');
                                             },
                                             error: function (data) {
