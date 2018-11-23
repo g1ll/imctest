@@ -18,7 +18,6 @@ $(document).ready(function () {
 
     $('#salvar').click(
             function () {
-
                 nome = prompt('Informe seu nome');
                 //ENVIA DADOS PARA O SERVIDOR VIA POST
                 $.ajax(
@@ -65,13 +64,11 @@ $(document).ready(function () {
                                     $("#table table tbody").html(table);
                                     $("#table").fadeIn('fadein');
                                 });
-
                             },
                             error: function (data) {
                                 $("#res").html("ERRO:<br>" + data);
                             }
                         }
                 );
-
             });
 });
