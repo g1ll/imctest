@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var nome, imc, alt, peso;
-    //var server = 'https://g1ll.000webhostapp.com';
-    var server = 'http://localhost/2017';
+    var server = 'https://g1ll.000webhostapp.com';
+    //var server = 'http://localhost/2017';
 
     $("#res").hide();
     $("#table").hide();
