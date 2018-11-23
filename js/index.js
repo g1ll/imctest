@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var nome, imc, alt, peso;
-    var server = 'g1ll.000webhostapp.com';
-//	var server = 'localhost';
+    //var server = 'https://g1ll.000webhostapp.com';
+    var server = 'http://localhost/2017';
 
     $("#res").hide();
     $("#table").hide();
@@ -24,35 +24,48 @@ $(document).ready(function () {
                 $.ajax(
                         {
                             type: 'post',
-                            url: 'https://' + server + '/ajaxphp/insere.php',
+                            url: server + '/ajaxphp/insere.php',
                             data: {name: nome, altura: alt, peso: peso, imc: imc},
                             dataType: 'html',
                             success: function (data) {
                                 $("#res").html("IMC: " + imc.toFixed(2) + " <br>" + data);
                                 //ACESSA DADOS DO SERVIDOR VIA GET
-                                $.ajax(
-                                        {
-                                            type: 'get',
-                                            url: 'https://' + server + '/ajaxphp/consulta.php',
-                                            dataType: 'JSON',
-                                            success: function (data) {
-                                                var table = '';
-                                                $.each(data, function (i, v) {
-                                                    table += '<tr><td>' + v.id + '</td>\n\
+//                                $.ajax(
+//                                        {
+//                                            type: 'get',
+//                                            url: server + '/ajaxphp/consulta.php',
+//                                            dataType: 'JSON',
+//                                            success: function (data) {
+//                                                var table = '';
+//                                                $.each(data, function (i, v) {
+//                                                    table += '<tr><td>' + v.id + '</td>\n\
+//                                                            <td>' + v.name + '</td>\n\
+//                                                            <td>' + parseFloat(v.altura).toFixed(2) + '</td>\n\
+//                                                            <td>' + parseFloat(v.peso).toFixed(2) + '</td>\n\
+//                                                            <td>' + parseFloat(v.imc).toFixed(2) + '</td>\n\
+//                                                            </tr>';
+//                                                });
+//                                                $("#table table tbody").html(table);
+//                                                $("#table").fadeIn('fadein');
+//                                            },
+//                                            error: function (data) {
+//                                                $("#res").html("ERRO:<br>" + data);
+//                                            }
+//                                        }
+//                                );
+                                $.getJSON(server + '/ajaxphp/consulta.php', function (data) {
+                                    $.each(data, function (i, v) {
+                                        table += '<tr><td>' + v.id + '</td>\n\
                                                             <td>' + v.name + '</td>\n\
                                                             <td>' + parseFloat(v.altura).toFixed(2) + '</td>\n\
                                                             <td>' + parseFloat(v.peso).toFixed(2) + '</td>\n\
                                                             <td>' + parseFloat(v.imc).toFixed(2) + '</td>\n\
                                                             </tr>';
-                                                });
-                                                $("#table table tbody").html(table);
-                                                $("#table").fadeIn('fadein');
-                                            },
-                                            error: function (data) {
-                                                $("#res").html("ERRO:<br>" + data);
-                                            }
-                                        }
-                                );
+                                    });
+                                    $("#table table tbody").html(table);
+                                    $("#table").fadeIn('fadein');
+                                });
+
                             },
                             error: function (data) {
                                 $("#res").html("ERRO:<br>" + data);
