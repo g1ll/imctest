@@ -6,14 +6,12 @@ $(document).ready(function () {
     $("#res").hide();
     $("#table").hide();
     $("#calc").click(function () {
-
         $("#res").hide();
         alt = $("#alt").val();
         peso = $("#peso").val();
         imc = peso / (alt * alt);
         $("#res").html("IMC: " + imc.toFixed(2));
         $("#res").slideToggle('slow');
-
     });
 
     $('#salvar').click(
@@ -29,30 +27,8 @@ $(document).ready(function () {
                             success: function (data) {
                                 $("#res").html("IMC: " + imc.toFixed(2) + " <br>" + data);
                                 //ACESSA DADOS DO SERVIDOR VIA GET
-//                                $.ajax(
-//                                        {
-//                                            type: 'get',
-//                                            url: server + '/ajaxphp/consulta.php',
-//                                            dataType: 'JSON',
-//                                            success: function (data) {
-//                                                var table = '';
-//                                                $.each(data, function (i, v) {
-//                                                    table += '<tr><td>' + v.id + '</td>\n\
-//                                                            <td>' + v.name + '</td>\n\
-//                                                            <td>' + parseFloat(v.altura).toFixed(2) + '</td>\n\
-//                                                            <td>' + parseFloat(v.peso).toFixed(2) + '</td>\n\
-//                                                            <td>' + parseFloat(v.imc).toFixed(2) + '</td>\n\
-//                                                            </tr>';
-//                                                });
-//                                                $("#table table tbody").html(table);
-//                                                $("#table").fadeIn('fadein');
-//                                            },
-//                                            error: function (data) {
-//                                                $("#res").html("ERRO:<br>" + data);
-//                                            }
-//                                        }
-//                                );
                                 $.getJSON(server + '/ajaxphp/consulta.php', function (data) {
+                                    let table = '';
                                     $.each(data, function (i, v) {
                                         table += '<tr><td>' + v.id + '</td>\n\
                                                             <td>' + v.name + '</td>\n\
