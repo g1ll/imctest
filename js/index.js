@@ -28,7 +28,6 @@ $(document).ready(function () {
                                 $("#res").html("IMC: " + imc.toFixed(2) + " <br>" + data);
                                 //ACESSA DADOS DO SERVIDOR VIA GET
                                 $.getJSON(server + '/ajaxphp/consulta.php', function (data) {
-                                  //  let table = '';
                                     $.each(data, function (i, v) {
                                         table += '<tr><td>' + v.id + '</td>\n\
                                                             <td>' + v.name + '</td>\n\
